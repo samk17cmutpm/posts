@@ -1,24 +1,15 @@
 package com.post.presentation.post
 
-import android.util.Log
 import com.post.domain.interactors.FetchingPostInteractor
-import com.post.domain.repositories.PostRepository
 import com.post.entity.Post
 import com.post.presentation.BaseConsumer
-import javax.inject.Inject
 
 /**
  * Created by sam_nguyen on 1/11/18.
  */
-class PostPresenter constructor(val mPostRepository: PostRepository) : PostContract.Presenter {
-
-    private lateinit var mView: PostContract.View
-
-    private var mFetchingPostInteractor: FetchingPostInteractor
-
-    init {
-        mFetchingPostInteractor = FetchingPostInteractor(mPostRepository)
-    }
+class PostPresenter constructor(
+        val mView: PostContract.View,
+        val mFetchingPostInteractor: FetchingPostInteractor) : PostContract.Presenter {
 
     override fun detachView() {
         mFetchingPostInteractor.dispose()
@@ -32,9 +23,5 @@ class PostPresenter constructor(val mPostRepository: PostRepository) : PostContr
                 mView.showPost(data)
             }
         }, FetchingPostInteractor.RequestValues())
-    }
-
-    override fun attachView(view: PostContract.View) {
-        mView = view
     }
 }

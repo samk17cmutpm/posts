@@ -32,13 +32,15 @@ class PostActivity : BaseActivity(), PostContract.View, SwipeRefreshLayout.OnRef
 
     val mPosts = ArrayList<Post>()
 
-    override fun initDagger() {
+    override fun initComponent() {
         val mRepositoryComponent = DaggerRepositoryComponent.builder().build()
-        DaggerPostComponent.builder().repositoryComponent(mRepositoryComponent).build().inject(this)
+        DaggerPostComponent.builder()
+                .repositoryComponent(mRepositoryComponent)
+                .postModule(PostModule(this))
+                .build().inject(this)
     }
 
     override fun initUI() {
-        mPresenter.attachView(this)
         mPostSwipeRefreshLayout.setColorSchemeResources(
                 android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
@@ -69,7 +71,7 @@ class PostActivity : BaseActivity(), PostContract.View, SwipeRefreshLayout.OnRef
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
         ButterKnife.bind(this)
-        initDagger()
+        initComponent()
         initUI()
         initData()
     }
