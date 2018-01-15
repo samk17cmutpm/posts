@@ -1,4 +1,4 @@
-package com.post.di
+package com.post.di.repositories
 
 import com.post.data.repositories.PostDataRepository
 import com.post.domain.repositories.PostRepository

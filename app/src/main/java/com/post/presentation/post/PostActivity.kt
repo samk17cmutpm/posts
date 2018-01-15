@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.post.R
-import com.post.di.DaggerRepositoryComponent
+import com.post.di.repositories.DaggerRepositoryComponent
 import com.post.entity.Post
 import com.post.presentation.BaseActivity
 import com.post.presentation.ui_helper.SpacesItemDecoration

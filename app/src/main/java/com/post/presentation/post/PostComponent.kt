@@ -1,6 +1,6 @@
 package com.post.presentation.post
 
-import com.post.di.RepositoryComponent
+import com.post.di.repositories.RepositoryComponent
 import dagger.Component
 import javax.inject.Singleton
 
