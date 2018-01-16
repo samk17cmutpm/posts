@@ -13,19 +13,16 @@ import javax.inject.Singleton
 class PostModule constructor(val mView: PostContract.View) {
 
     @Provides
-    @Singleton
     fun providesPostPresenter(mFetchingPostInteractor: FetchingPostInteractor) : PostContract.Presenter {
         return PostPresenter(mView, mFetchingPostInteractor)
     }
 
     @Provides
-    @Singleton
     fun providesPostView() : PostContract.View {
         return mView
     }
 
     @Provides
-    @Singleton
     fun providesFetchingPostInteractor(postDataRepository: PostDataRepository) : FetchingPostInteractor {
         return FetchingPostInteractor(postDataRepository)
     }
