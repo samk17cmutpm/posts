@@ -26,4 +26,5 @@ class PostModule constructor(val mView: PostContract.View) {
     fun providesFetchingPostInteractor(postDataRepository: PostDataRepository) : FetchingPostInteractor {
         return FetchingPostInteractor(postDataRepository)
     }
+
 }
