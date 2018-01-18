@@ -11,7 +11,7 @@ import retrofit2.Response
  */
 class FetchingPostInteractor constructor(val mPostRepository: PostRepository) : UseCase<FetchingPostInteractor.RequestValues, List<Post>>() {
 
-    override fun buildUseCaseObservable(requestValues: RequestValues): Observable<Response<List<Post>>> {
+    override fun buildUseCaseObservable(requestValues: RequestValues): Observable<List<Post>> {
         return mPostRepository.fetchPost()
     }
 

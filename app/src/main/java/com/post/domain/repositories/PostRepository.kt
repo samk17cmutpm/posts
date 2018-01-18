@@ -12,5 +12,5 @@ interface PostRepository {
     /**
      * Fetching Post
      */
-    fun fetchPost() : Observable<Response<List<Post>>>
+    fun fetchPost() : Observable<List<Post>>
 }

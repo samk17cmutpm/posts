@@ -10,7 +10,7 @@ abstract class OnlyFetchDataConsumer<T> : AppConsumer<T> {
     init {
     }
 
-    override fun accept(t: Response<T>?) {
+    override fun accept(t: T?) {
 
     }
 

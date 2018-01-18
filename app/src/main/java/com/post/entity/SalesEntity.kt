@@ -1,7 +1,9 @@
 package com.post.entity
 
-/**
- * Created by sam_nguyen on 1/18/18.
- */
-class SalesEntity {
-}
+data class SalesEntity(
+	val image: String? = null,
+	val name: String? = null,
+	val id: Int? = null,
+	val store: Store? = null,
+	val email: String? = null
+)

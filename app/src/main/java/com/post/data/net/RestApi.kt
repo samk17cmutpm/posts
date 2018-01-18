@@ -1,6 +1,5 @@
 package com.post.data.net
 
-import com.post.data.net.request_body.SignInRequestBody
 import com.post.data.request_params.SalesSignInParams
 import com.post.data.responses.Post
 import com.post.data.responses.Sale
@@ -15,7 +14,7 @@ import retrofit2.http.POST
  */
 interface RestApi {
     @GET(value = "posts")
-    fun fetchPost() : Observable<Response<List<Post>>>
+    fun fetchPost() : Observable<List<Post>>
 
     @POST(value = "api/v1/sales/sign_in")
     fun signIn(@Body signInParams: SalesSignInParams) : Observable<Response<Sale>>
