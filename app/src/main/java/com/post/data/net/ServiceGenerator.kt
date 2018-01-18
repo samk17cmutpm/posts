@@ -12,7 +12,8 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 class ServiceGenerator private constructor() {
     companion object {
-        private val API_BASE_URL = "https://jsonplaceholder.typicode.com/"
+//        private val API_BASE_URL = "https://jsonplaceholder.typicode.com/"
+        private val API_BASE_URL = "https://nova-x.herokuapp.com/"
         private val DATE_FORMAT = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'"
         private val TIME_OUT = 1000
 

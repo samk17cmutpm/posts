@@ -9,7 +9,7 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.post.R
-import com.post.entity.Post
+import com.post.data.responses.Post
 
 /**
  * Created by sam_nguyen on 1/12/18.
@@ -19,8 +19,7 @@ class PostAdapter constructor(val posts: List<Post>) : RecyclerView.Adapter<Post
         val context: Context = parent!!.context
         val inflater = LayoutInflater.from(context)
         val postItemView: View = inflater.inflate(R.layout.post_item, parent, false)
-        val viewHolder: PostAdapter.ViewHolder = PostAdapter.ViewHolder(postItemView)
-        return viewHolder
+        return ViewHolder(postItemView)
     }
 
     override fun onBindViewHolder(holder: PostAdapter.ViewHolder, position: Int) {

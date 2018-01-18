@@ -1,6 +1,6 @@
 package com.post.domain.repositories
 
-import com.post.entity.Post
+import com.post.data.responses.Post
 import io.reactivex.Observable
 import retrofit2.Response
 

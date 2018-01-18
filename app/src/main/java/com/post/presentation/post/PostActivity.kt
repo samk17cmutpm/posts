@@ -8,7 +8,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.post.R
 import com.post.di.repositories.DaggerRepositoryComponent
-import com.post.entity.Post
+import com.post.data.responses.Post
 import com.post.presentation.BaseActivity
 import com.post.presentation.ui_helper.SpacesItemDecoration
 import javax.inject.Inject
@@ -24,13 +24,13 @@ class PostActivity : BaseActivity(), PostContract.View, SwipeRefreshLayout.OnRef
     @BindView(R.id.post_swipe_refresh_layout)
     lateinit var mPostSwipeRefreshLayout: SwipeRefreshLayout
 
-    lateinit var mSpacesItemDecoration: SpacesItemDecoration
+    private lateinit var mSpacesItemDecoration: SpacesItemDecoration
 
-    lateinit var mLinearLayoutManager: LinearLayoutManager
+    private lateinit var mLinearLayoutManager: LinearLayoutManager
 
-    lateinit var mPostAdapter: PostAdapter
+    private lateinit var mPostAdapter: PostAdapter
 
-    val mPosts = ArrayList<Post>()
+    private val mPosts = ArrayList<Post>()
 
     override fun initComponent() {
         val mRepositoryComponent = DaggerRepositoryComponent.builder().build()

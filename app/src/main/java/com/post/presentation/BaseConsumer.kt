@@ -7,7 +7,6 @@ import retrofit2.Response
  * Created by sam_nguyen on 1/11/18.
  */
 abstract class BaseConsumer<T> : Consumer<Response<T>> {
-
     override fun accept(t: Response<T>?) {
         /**
          * When t == null => 500

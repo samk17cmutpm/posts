@@ -1,4 +1,4 @@
-package com.post.entity
+package com.post.data.responses
 
 import com.google.gson.annotations.SerializedName
 

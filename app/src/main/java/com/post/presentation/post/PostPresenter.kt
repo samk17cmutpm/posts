@@ -1,8 +1,6 @@
 package com.post.presentation.post
 
 import com.post.domain.interactors.FetchingPostInteractor
-import com.post.entity.Post
-import com.post.presentation.BaseConsumer
 
 /**
  * Created by sam_nguyen on 1/11/18.
@@ -17,11 +15,10 @@ class PostPresenter constructor(
 
     override fun fetchPost() {
         mView.showIndicator(active = true)
-        mFetchingPostInteractor.run(object : BaseConsumer<List<Post>>() {
-            override fun onSuccess(data: List<Post>) {
-                mView.showIndicator(active = false)
-                mView.showPost(data)
-            }
-        }, FetchingPostInteractor.RequestValues())
+//        mFetchingPostInteractor.run(object : OnlyFetchDataConsumer<List<Post>>() {
+//            override fun accept(t: Response<List<Post>>?) {
+//                mView.showIndicator(active = false)
+//            }
+//        }, FetchingPostInteractor.RequestValues())
     }
 }

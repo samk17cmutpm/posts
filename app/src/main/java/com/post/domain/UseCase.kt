@@ -1,6 +1,7 @@
 package com.post.domain
 
 import com.post.presentation.BaseConsumer
+import com.post.presentation.subsciber.AppConsumer
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -18,7 +19,7 @@ abstract class UseCase<Q : UseCase.RequestValues, P> {
 
     abstract fun buildUseCaseObservable(requestValues: Q) : Observable<Response<P>>
 
-    fun run(consumer: BaseConsumer<P>, requestValues: Q) {
+    fun run(consumer: AppConsumer<P>, requestValues: Q) {
         val observable: Observable<Response<P>> = this.buildUseCaseObservable(requestValues)
         subscription.add(observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

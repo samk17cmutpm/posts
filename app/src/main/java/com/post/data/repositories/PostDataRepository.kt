@@ -3,7 +3,7 @@ package com.post.data.repositories
 import com.post.data.net.RestApi
 import com.post.data.net.ServiceGenerator
 import com.post.domain.repositories.PostRepository
-import com.post.entity.Post
+import com.post.data.responses.Post
 import io.reactivex.Observable
 import retrofit2.Response
 import javax.inject.Inject

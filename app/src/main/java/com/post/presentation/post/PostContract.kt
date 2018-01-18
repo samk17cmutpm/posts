@@ -1,6 +1,6 @@
 package com.post.presentation.post
 
-import com.post.entity.Post
+import com.post.data.responses.Post
 import com.post.presentation.BasePresenter
 import com.post.presentation.BaseView
 
