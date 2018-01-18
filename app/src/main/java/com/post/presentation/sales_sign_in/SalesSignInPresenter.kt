@@ -1,6 +1,5 @@
 package com.post.presentation.sales_sign_in
 
-import com.post.data.request_params.SalesSignInParams
 import com.post.domain.interactors.SalesSignInInteractor
 import com.post.entity.SalesEntity
 import com.post.presentation.subsciber.OnlyFetchDataConsumer
@@ -13,10 +12,12 @@ class SalesSignInPresenter constructor(
         val mSalesSignInInteractor: SalesSignInInteractor) : SalesSignInContract.Presenter {
 
     override fun signIn(email: String, password: String) {
-        val salesSignInParams = SalesSignInParams(email = email, password = password)
+        val requestValues = SalesSignInInteractor.RequestValues(email = email, password = password)
         mSalesSignInInteractor.run(object : OnlyFetchDataConsumer<SalesEntity>() {
-
-        }, salesSignInParams)
+            override fun accept(salesEntity: SalesEntity?) {
+                super.accept(salesEntity)
+            }
+        }, requestValues)
     }
 
     override fun detachView() {

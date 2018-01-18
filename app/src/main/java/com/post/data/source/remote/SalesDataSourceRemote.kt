@@ -13,6 +13,11 @@ import retrofit2.Response
  */
 class SalesDataSourceRemote : SalesDataSource {
 
+    companion object {
+        val EMAIL_KEY = "email"
+        val PASSWORD_KEY = "password"
+    }
+
     val mRestApi = ServiceGenerator.createService(RestApi::class.java)
 
     override fun signIn(salesSignInParams: SalesSignInParams): Observable<Response<Sale>> {

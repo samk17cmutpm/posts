@@ -1,6 +1,5 @@
 package com.post.domain.repositories
 
-import com.post.data.request_params.SalesSignInParams
 import com.post.entity.SalesEntity
 import io.reactivex.Observable
 
@@ -12,6 +11,6 @@ interface SalesRepository {
     /**
      * Sign In
      */
-    fun signIn(salesSignInParams: SalesSignInParams) : Observable<SalesEntity>
+    fun signIn(email: String, password: String) : Observable<SalesEntity>
 
 }
