@@ -2,6 +2,7 @@ package com.post.data.source
 
 import com.post.data.request_params.SalesSignInParams
 import com.post.data.responses.Sale
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import retrofit2.Response
 
@@ -10,4 +11,5 @@ import retrofit2.Response
  */
 interface SalesDataSource {
     fun signIn(salesSignInParams: SalesSignInParams): Observable<Response<Sale>>
+    fun signInWithFlowable(salesSignInParams: SalesSignInParams) : Flowable<Response<Sale>>
 }

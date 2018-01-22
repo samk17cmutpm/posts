@@ -2,5 +2,9 @@
     <string name="app_name">Post</string>
     <string name="post_title">Post Title</string>
     <string name="post_content">post_content</string>
+    <string name="sales_sign_in_email">Email</string>
+    <string name="sales_sign_in_password">Password</string>
+    <string name="sales_sign_in_button">Sign In</string>
+    <string name="sales_sign_in_title">Sign In</string>
 
 </resources>

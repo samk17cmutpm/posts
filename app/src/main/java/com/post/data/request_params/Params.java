@@ -3,7 +3,7 @@ package com.post.data.request_params;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.post.domain.UseCase;
+import com.post.domain.ObservableUseCase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.Map;
  * Created by sam_nguyen on 1/18/18.
  */
 
-public class Params implements UseCase.RequestValues {
+public class Params implements ObservableUseCase.RequestValues {
     public static final Params EMPTY = Params.create();
 
     private final Map<String, Object> parameters = new HashMap<>();

@@ -1,6 +1,7 @@
 package com.post.domain.repositories
 
 import com.post.entity.SalesEntity
+import io.reactivex.Flowable
 import io.reactivex.Observable
 
 /**
@@ -12,5 +13,7 @@ interface SalesRepository {
      * Sign In
      */
     fun signIn(email: String, password: String) : Observable<SalesEntity>
+
+    fun signInWithFlowable(email: String, password: String) : Flowable<SalesEntity>
 
 }

@@ -7,5 +7,6 @@ data class SalesEntity(
 	val store: Store? = null,
 	val email: String? = null,
 	val uuid: String? = null,
-	val accessToken: String? = null
+	val accessToken: String? = null,
+	val client: String? = null
 )
