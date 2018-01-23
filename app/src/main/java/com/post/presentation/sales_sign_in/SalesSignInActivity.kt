@@ -29,10 +29,7 @@ class SalesSignInActivity : BaseActivity(), SalesSignInContract.View {
     @OnClick(R.id.sales_sign_in_bt)
     fun signIn() {
         if (validateInputs()) {
-            mPresenter.signInWithFlowable(
-                    email = mSalesSignInEmailEd.text.toString(),
-                    password = mSalesSignInPasswordEd.text.toString()
-            )
+            mPresenter.signInWithFlowable(email = mSalesSignInEmailEd.text.toString(), password = mSalesSignInPasswordEd.text.toString())
         }
     }
 

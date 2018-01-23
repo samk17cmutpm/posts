@@ -4,11 +4,12 @@ import com.post.domain.ObservableUseCase
 import com.post.domain.repositories.SalesRepository
 import com.post.entity.SalesEntity
 import io.reactivex.Observable
+import javax.inject.Inject
 
 /**
  * Created by sam_nguyen on 1/17/18.
  */
-class SalesSignInInteractor constructor(private val mSaleRepository: SalesRepository) : ObservableUseCase<SalesSignInInteractor.RequestValues, SalesEntity>() {
+class SalesSignInInteractor @Inject constructor(private val mSaleRepository: SalesRepository) : ObservableUseCase<SalesSignInInteractor.RequestValues, SalesEntity>() {
 
     override fun buildUseCaseObservable(requestValues: SalesSignInInteractor.RequestValues): Observable<SalesEntity> {
         return mSaleRepository.signIn(email = requestValues.email!!, password = requestValues.password!!)

@@ -10,11 +10,14 @@ import dagger.Provides
  * Created by sam_nguyen on 1/17/18.
  */
 @Module
-class SalesSignInModule constructor(val mView: SalesSignInContract.View) {
+class SalesSignInModule constructor(private val mView: SalesSignInContract.View) {
 
     @Provides
     fun providesSalesSignInPresenter(mSalesSignInInteractor: SalesSignInInteractor, mSalesSignInWithFlowableInteractor: SalesSignInWithFlowableInteractor) : SalesSignInContract.Presenter {
-        return SalesSignInPresenter(mView, mSalesSignInInteractor, mSalesSignInWithFlowableInteractor)
+        return SalesSignInPresenter(
+                mView = mView,
+                mSalesSignInInteractor = mSalesSignInInteractor,
+                mSalesSignInWithFlowableInteractor = mSalesSignInWithFlowableInteractor)
     }
 
     @Provides
@@ -24,12 +27,12 @@ class SalesSignInModule constructor(val mView: SalesSignInContract.View) {
 
     @Provides
     fun providesSalesSignInInteractor(salesDataRepository: SalesDataRepository) : SalesSignInInteractor {
-        return SalesSignInInteractor(salesDataRepository)
+        return SalesSignInInteractor(mSaleRepository = salesDataRepository)
     }
 
     @Provides
     fun providesSalesSignInWithFlowableInteractor(salesDataRepository: SalesDataRepository) : SalesSignInWithFlowableInteractor {
-        return SalesSignInWithFlowableInteractor(salesDataRepository)
+        return SalesSignInWithFlowableInteractor(mSaleRepository = salesDataRepository)
     }
 
 }

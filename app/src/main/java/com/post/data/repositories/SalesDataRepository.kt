@@ -9,8 +9,6 @@ import com.post.data.source.remote.SalesDataSourceRemote
 import com.post.entity.SalesEntity
 import io.reactivex.Flowable
 import io.reactivex.Observable
-import io.reactivex.functions.Function
-import retrofit2.Response
 import javax.inject.Inject
 
 /**
