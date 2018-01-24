@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
  */
 abstract class ObservableUseCase<in Q : ObservableUseCase.RequestValues, P> {
 
-    val disposable: CompositeDisposable = CompositeDisposable()
+    private val disposable: CompositeDisposable = CompositeDisposable()
 
     interface RequestValues
 

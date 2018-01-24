@@ -2,7 +2,6 @@ package com.post.presentation.sales_sign_in
 
 import com.post.data.repositories.SalesDataRepository
 import com.post.domain.interactors.SalesSignInInteractor
-import com.post.domain.interactors.SalesSignInWithFlowableInteractor
 import dagger.Module
 import dagger.Provides
 
@@ -13,11 +12,8 @@ import dagger.Provides
 class SalesSignInModule constructor(private val mView: SalesSignInContract.View) {
 
     @Provides
-    fun providesSalesSignInPresenter(mSalesSignInInteractor: SalesSignInInteractor, mSalesSignInWithFlowableInteractor: SalesSignInWithFlowableInteractor) : SalesSignInContract.Presenter {
-        return SalesSignInPresenter(
-                mView = mView,
-                mSalesSignInInteractor = mSalesSignInInteractor,
-                mSalesSignInWithFlowableInteractor = mSalesSignInWithFlowableInteractor)
+    fun providesSalesSignInPresenter(mSalesSignInInteractor: SalesSignInInteractor) : SalesSignInContract.Presenter {
+        return SalesSignInPresenter(mView = mView, mSalesSignInInteractor = mSalesSignInInteractor)
     }
 
     @Provides
@@ -28,11 +24,6 @@ class SalesSignInModule constructor(private val mView: SalesSignInContract.View)
     @Provides
     fun providesSalesSignInInteractor(salesDataRepository: SalesDataRepository) : SalesSignInInteractor {
         return SalesSignInInteractor(mSaleRepository = salesDataRepository)
-    }
-
-    @Provides
-    fun providesSalesSignInWithFlowableInteractor(salesDataRepository: SalesDataRepository) : SalesSignInWithFlowableInteractor {
-        return SalesSignInWithFlowableInteractor(mSaleRepository = salesDataRepository)
     }
 
 }

@@ -16,4 +16,10 @@ interface BaseViewActions {
      */
     fun initToolBar(toolbar: Toolbar, title: String, icon: Int)
 
+    /**
+     * When Token Is Expired Or Server Is Broken
+     * @param code
+     */
+    fun handleStatusCodeError(code: Int)
+
 }

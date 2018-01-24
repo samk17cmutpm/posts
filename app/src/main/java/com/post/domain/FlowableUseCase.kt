@@ -11,7 +11,7 @@ import io.reactivex.subscribers.DisposableSubscriber
  */
 abstract class FlowableUseCase<in Q : FlowableUseCase.RequestValues, P> {
 
-    val disposable: CompositeDisposable = CompositeDisposable()
+    private val disposable: CompositeDisposable = CompositeDisposable()
 
     interface RequestValues
 

@@ -5,12 +5,25 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.TextView
 import com.post.R
-import kotlinx.android.synthetic.main.toolbar.view.*
+import com.post.presentation.handle_error.HandleErrorActivity
 
 /**
  * Created by sam_nguyen on 1/12/18.
  */
 open class BaseActivity : AppCompatActivity(), BaseViewActions {
+
+    override fun handleStatusCodeError(code: Int) {
+        when (code) {
+            401 -> {
+                HandleErrorActivity.start(this)
+                finish()
+            }
+            500 -> {
+
+            }
+        }
+    }
+
     override fun initToolBar(toolbar: Toolbar, title: String, icon: Int) {
         setSupportActionBar(toolbar)
         toolbar.setContentInsetsAbsolute(0, 0)

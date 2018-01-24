@@ -1,11 +1,14 @@
 package com.post.data.repositories
 
+import com.post.data.exceptions.RemoteDataException
+import com.post.data.exceptions.RemoteDataThrowable
 import com.post.data.mapper.SalesMapper
 import com.post.data.request_params.SalesSignInParams
 import com.post.data.responses.Sale
 import com.post.data.responses.SignInHeader
 import com.post.domain.repositories.SalesRepository
 import com.post.data.source.remote.SalesDataSourceRemote
+import com.post.data.utils.DomainUtils
 import com.post.entity.SalesEntity
 import io.reactivex.Flowable
 import io.reactivex.Observable
@@ -27,9 +30,8 @@ class SalesDataRepository @Inject constructor(): SalesRepository {
                 val signInHeader = SignInHeader(uid = uid, client = client, accessToken = accessToken)
                 SalesMapper.convertSalesToSalesEntity(sale!!, signInHeader)
             } else{
-                SalesEntity()
+                throw RemoteDataThrowable(DomainUtils.parseError(t).message(), t.code())
             }
-
         }
     }
 
@@ -57,7 +59,6 @@ class SalesDataRepository @Inject constructor(): SalesRepository {
             } else{
                 SalesEntity()
             }
-
         }
     }
 }

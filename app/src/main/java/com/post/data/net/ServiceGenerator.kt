@@ -1,7 +1,10 @@
 package com.post.data.net
 
 import com.google.gson.GsonBuilder
+import com.post.presentation.handle_error.HandleErrorActivity
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -26,7 +29,15 @@ class ServiceGenerator private constructor() {
 
         private var retrofit: Retrofit = builder.build()
 
-        private val httpClient: OkHttpClient.Builder = OkHttpClient.Builder()
+        private val httpClient: OkHttpClient.Builder = OkHttpClient.Builder().addInterceptor { chain ->
+            val request = chain.request()
+            val response = chain.proceed(request)
+            when (response!!.code()) {
+                401 -> {}
+                500 -> {}
+            }
+            response
+        }
 
         private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
@@ -37,6 +48,10 @@ class ServiceGenerator private constructor() {
                 retrofit = builder.build()
             }
             return retrofit.create(serviceClass)
+        }
+
+        fun retrofit() : Retrofit {
+            return retrofit
         }
     }
 }

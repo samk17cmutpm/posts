@@ -15,7 +15,6 @@ interface SalesSignInContract {
 
     interface Presenter : BasePresenter<View> {
         fun signIn(email: String, password: String)
-        fun signInWithFlowable(email: String, password: String)
     }
 
     interface SignInStatus {
