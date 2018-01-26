@@ -11,7 +11,7 @@ import javax.inject.Inject
  */
 class SalesSignInInteractor @Inject constructor(val mSaleRepository: SalesRepository) : FlowableUseCase<SalesSignInInteractor.RequestValues, SalesEntity>() {
     override fun buildUseCaseObservable(requestValues: RequestValues): Flowable<SalesEntity> {
-        return mSaleRepository.signInWithFlowable(email = requestValues.email!!, password = requestValues.password!!)
+        return mSaleRepository.signInWithFlowable(requestValues.email!!, requestValues.password!!)
     }
 
     class RequestValues(val email: String? = null, val password: String? = null) : FlowableUseCase.RequestValues

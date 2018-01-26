@@ -21,7 +21,5 @@ interface SalesSignInContract {
         fun validate()
     }
 
-    interface SignInData {
-
-    }
+    interface SignInData
 }

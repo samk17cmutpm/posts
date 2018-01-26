@@ -13,7 +13,7 @@ class SalesSignInModule constructor(private val mView: SalesSignInContract.View)
 
     @Provides
     fun providesSalesSignInPresenter(mSalesSignInInteractor: SalesSignInInteractor) : SalesSignInContract.Presenter {
-        return SalesSignInPresenter(mView = mView, mSalesSignInInteractor = mSalesSignInInteractor)
+        return SalesSignInPresenter(mView, mSalesSignInInteractor)
     }
 
     @Provides
@@ -23,7 +23,7 @@ class SalesSignInModule constructor(private val mView: SalesSignInContract.View)
 
     @Provides
     fun providesSalesSignInInteractor(salesDataRepository: SalesDataRepository) : SalesSignInInteractor {
-        return SalesSignInInteractor(mSaleRepository = salesDataRepository)
+        return SalesSignInInteractor(salesDataRepository)
     }
 
 }

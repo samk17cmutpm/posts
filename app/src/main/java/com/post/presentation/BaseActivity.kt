@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.TextView
+import android.widget.Toast
 import com.post.R
 import com.post.presentation.handle_error.HandleErrorActivity
 
@@ -11,6 +12,10 @@ import com.post.presentation.handle_error.HandleErrorActivity
  * Created by sam_nguyen on 1/12/18.
  */
 open class BaseActivity : AppCompatActivity(), BaseViewActions {
+
+    override fun handleInternetException(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
 
     override fun handleStatusCodeError(code: Int) {
         when (code) {

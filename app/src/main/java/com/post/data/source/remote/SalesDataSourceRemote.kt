@@ -17,7 +17,7 @@ class SalesDataSourceRemote : SalesDataSource {
         return mRestApi.signInWithFlowable(salesSignInParams)
     }
 
-    val mRestApi = ServiceGenerator.createService(RestApi::class.java)
+    private val mRestApi = ServiceGenerator.createService(RestApi::class.java)
 
     override fun signIn(salesSignInParams: SalesSignInParams): Observable<Response<Sale>> {
         return mRestApi.signIn(salesSignInParams)

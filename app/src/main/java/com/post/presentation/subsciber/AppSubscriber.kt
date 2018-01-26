@@ -12,12 +12,16 @@ abstract class AppSubscriber<T> constructor(private val baseViewActions: BaseVie
 
     }
 
-    override fun onNext(t: T) {
-
-    }
+    abstract override fun onNext(t: T)
 
     override fun onError(throwable: Throwable?) {
-        val remoteDataThrowable = throwable as RemoteDataThrowable
-        baseViewActions.handleStatusCodeError(remoteDataThrowable.remoteStatusCode)
+        if (throwable is RemoteDataThrowable) {
+            baseViewActions.handleStatusCodeError(throwable.remoteStatusCode)
+            onFailure(throwable.message!!)
+        } else {
+            baseViewActions.handleInternetException(throwable?.message!!)
+        }
     }
+
+    abstract fun onFailure(message: String)
 }

@@ -12,8 +12,6 @@ interface SalesRepository {
     /**
      * Sign In
      */
-    fun signIn(email: String, password: String) : Observable<SalesEntity>
-
     fun signInWithFlowable(email: String, password: String) : Flowable<SalesEntity>
 
 }

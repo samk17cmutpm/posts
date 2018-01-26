@@ -11,14 +11,14 @@ import javax.inject.Inject
 /**
  * Created by sam_nguyen on 1/17/18.
  */
-class SalesSignInPresenter @Inject constructor(val mView: SalesSignInContract.View,
-                                               val mSalesSignInInteractor: SalesSignInInteractor)
+class SalesSignInPresenter @Inject constructor(private val mView: SalesSignInContract.View,
+                                               private val mSalesSignInInteractor: SalesSignInInteractor)
     : SalesSignInContract.Presenter {
 
 
     override fun signIn(email: String, password: String) {
-        val requestValues = SalesSignInInteractor.RequestValues(email = email, password = password)
-        mSalesSignInInteractor.run(consumer = SalesSignInSubscriber(), requestValues = requestValues)
+        val requestValues = SalesSignInInteractor.RequestValues(email, password)
+        mSalesSignInInteractor.run(SalesSignInSubscriber(), requestValues)
     }
 
     override fun detachView() {
@@ -26,12 +26,12 @@ class SalesSignInPresenter @Inject constructor(val mView: SalesSignInContract.Vi
     }
 
     inner class SalesSignInSubscriber : AppSubscriber<SalesEntity>(mView as BaseViewActions) {
-        override fun onNext(t: SalesEntity) {
-            super.onNext(t)
+        override fun onFailure(message: String) {
+
         }
-        override fun onError(throwable: Throwable?) {
-            val remoteDataThrowable = throwable as RemoteDataThrowable
-            Log.e("===========>", "====" + remoteDataThrowable.message)
+
+        override fun onNext(t: SalesEntity) {
+
         }
     }
 }

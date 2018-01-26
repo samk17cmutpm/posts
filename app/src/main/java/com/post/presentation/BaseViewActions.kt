@@ -22,4 +22,10 @@ interface BaseViewActions {
      */
     fun handleStatusCodeError(code: Int)
 
+    /**
+     * When Time Out Or Internet Is Broken
+     * @param message
+     */
+    fun handleInternetException(message: String)
+
 }
