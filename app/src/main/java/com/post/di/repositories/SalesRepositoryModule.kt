@@ -10,7 +10,7 @@ import javax.inject.Singleton
  * Created by sam_nguyen on 1/17/18.
  */
 @Module
-class SalesRepositoryModule {
+class SalesRepositoryModule constructor() {
     @Provides
     @Singleton
     fun providesSalesRepository() : SalesRepository {

@@ -10,6 +10,5 @@ import retrofit2.Response
  * Created by sam_nguyen on 1/18/18.
  */
 interface SalesDataSource {
-    fun signIn(salesSignInParams: SalesSignInParams): Observable<Response<Sale>>
     fun signInWithFlowable(salesSignInParams: SalesSignInParams) : Flowable<Response<Sale>>
 }

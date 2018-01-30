@@ -1,5 +1,6 @@
 package com.post.data.repositories
 
+import com.post.data.di.DaggerSalesDataComponent
 import com.post.data.exceptions.RemoteDataThrowable
 import com.post.data.mapper.SalesMapper
 import com.post.data.request_params.SalesSignInParams
@@ -14,6 +15,13 @@ import javax.inject.Inject
  * Created by sam_nguyen on 1/17/18.
  */
 class SalesDataRepository @Inject constructor(): SalesRepository {
+
+    @Inject
+    lateinit var mSalesDataSourceRemote: SalesDataSourceRemote
+
+    init {
+        DaggerSalesDataComponent.builder().build().inject(this)
+    }
 
     override fun signInWithFlowable(email: String, password: String): Flowable<SalesEntity> {
         val salesSignInParams = SalesSignInParams(email, password)
@@ -37,9 +45,5 @@ class SalesDataRepository @Inject constructor(): SalesRepository {
         const val ACCESS_TOKEN: String = "access-token"
     }
 
-    /**
-     * For Data From Local
-     */
-    private val mSalesDataSourceRemote = SalesDataSourceRemote()
 
 }
